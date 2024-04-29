@@ -18,7 +18,7 @@ class DefaultJWTService: JWTService {
             .withAudience("audience")
             .withIssuer("issuer")
             .withClaim("username", login)
-            .withExpiresAt(Date())
+            .withExpiresAt(Date(System.currentTimeMillis() + 1_000_000))
             .sign(Algorithm.HMAC256("secret"))
     }
     override fun extractUsername(token: String): String? {
